@@ -8,7 +8,7 @@ df = pd.read_csv("trafficking_data.csv")
 results_victims = smf.ols('df["Adult victims"] ~ df["gdp"] + df["policy index"]',data=df).fit()
 
 df = df.replace(np.nan,0)
-ind_vars = df[["gdp","policy index","child victims"]]
+ind_vars = df[["policy index","child victims"]]
 
 results_prosecuted = sm.OLS(df["persons prosecuted"], ind_vars).fit()
 print results_victims.summary()
